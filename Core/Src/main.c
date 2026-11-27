@@ -96,7 +96,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM3_Init();
-  /* USER CODE BEGIN 2 */  
+  /* USER CODE BEGIN 2 */
 	
   /* USER CODE END 2 */
 
@@ -158,7 +158,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if (GPIO_Pin == KEY_1_Pin) {
 		uint32_t current_time = HAL_GetTick();//获取中断时间
-		if (current_time - last_time >= 20) { //消抖时间为20ms
+
+		if(current_time -last_time >20) { 
 			if (key_state == 0) { //按键未按下
 				key_state = 1; //按键按下
 				press_time = current_time; //记录按下时间
